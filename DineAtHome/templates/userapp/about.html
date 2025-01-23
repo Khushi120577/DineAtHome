@@ -1,0 +1,248 @@
+{% extends "master.html" %}
+{% load static %}
+{% block content%}
+
+    <body>
+        
+        <!-- Page Header Start -->
+        <div class="page-header mb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>About Us</h2>
+                    </div>
+                    <div class="col-12">
+                        <a href="{% url "indexview" %}">Home</a>
+                        <a href="">About Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <!-- Page Header End -->
+        {% comment %}         
+        <!-- Food Start -->
+        <div class="food mt-0">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <div class="food-item">
+                            <i class="flaticon-burger"></i>
+                            <h2>Custom Menus</h2>
+                            <p>
+                                Collaborate with our chefs to create personalized menus for your events or home dining experiences, tailored to your tastes and preferences.
+                            </p>
+                            <a href="">Explore Options</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="food-item">
+                            <i class="flaticon-snack"></i>
+                            <h2>Private Events</h2>
+                            <p>
+                                Make your private events unforgettable with on-site chefs who provide a seamless dining experience from preparation to service.
+                            </p>
+                            <a href="">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Food End -->
+         {% endcomment %}
+
+        <!-- Event Gallery Start -->
+        <div class="events-gallery py-5">
+            <div class="container">
+                <div class="section-header text-center">
+                    <p>Our Services</p>
+                    <h2>Special Events with Our Chefs</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'img/birthday1.jpg' %}" class="card-img-top" alt="Birthday Party">
+                            <div class="card-body">
+                                <h5 class="card-title">Birthday Parties</h5>
+                                <p class="card-text">Make your birthday celebrations extraordinary with our professional chefs creating personalized menus just for you.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'img/special2.jpg' %}" class="card-img-top" alt="Special Occasions">
+                            <div class="card-body">
+                                <h5 class="card-title">Special Occasions</h5>
+                                <p class="card-text">Celebrate life’s special moments with tailored culinary experiences that leave lasting memories.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'img/corporate eve2.jpg' %}" class="card-img-top" alt="Corporate Events">
+                            <div class="card-body">
+                                <h5 class="card-title">Corporate Events</h5>
+                                <p class="card-text">Impress your clients and team with gourmet dishes crafted by our expert chefs for your corporate gatherings.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'img/familydinner.jpg' %}" class="card-img-top" alt="Family Dinners">
+                            <div class="card-body">
+                                <h5 class="card-title">Family Dinners</h5>
+                                <p class="card-text">Enjoy quality time with your family while our chefs prepare a delectable feast tailored to your preferences.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'img/house warming1.jpg' %}" class="card-img-top" alt="Housewarming Party">
+                            <div class="card-body">
+                                <h5 class="card-title">Housewarming Party</h5>
+                                <p class="card-text">Celebrate your new home with delightful food and warm hospitality.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'img/engag3.jpg' %}" class="card-img-top" alt="Ring Ceremony">
+                            <div class="card-body">
+                                <h5 class="card-title">Ring Ceremony</h5>
+                                <p class="card-text">Celebrate the beginning of a beautiful journey with elegant decor and delicious cuisine.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'img/babyshower1.jpg' %}" class="card-img-top" alt="Baby Shower">
+                            <div class="card-body">
+                                <h5 class="card-title">Baby Shower</h5>
+                                <p class="card-text">Celebrate the upcoming arrival with delightful treats and beautiful arrangements.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'img/bachelor5.jpg' %}" class="card-img-top" alt="Bachelor Party">
+                            <div class="card-body">
+                                <h5 class="card-title">Bachelor Party</h5>
+                                <p class="card-text">Host a memorable bash with our premium food and drink packages.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'img/kitty.jpg' %}" class="card-img-top" alt="Kitty Party">
+                            <div class="card-body">
+                                <h5 class="card-title">Kitty Party</h5>
+                                <p class="card-text">Enjoy elegant snacks and desserts at your lively get-together.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% comment %} <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'img/event-inviting-guests.jpg' %}" class="card-img-top" alt="Inviting Guests">
+                            <div class="card-body">
+                                <h5 class="card-title">Inviting Guests</h5>
+                                <p class="card-text">Welcome your guests with exceptional hospitality and gourmet cuisine.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'img/event-pooja-ceremony.jpg' %}" class="card-img-top" alt="Pooja Ceremony">
+                            <div class="card-body">
+                                <h5 class="card-title">Pooja Ceremony</h5>
+                                <p class="card-text">Make your religious gatherings more divine with our traditional catering services.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'img/romantic3.jpg' %}" class="card-img-top" alt="Romantic Dinners">
+                            <div class="card-body">
+                                <h5 class="card-title">Romantic Dinners</h5>
+                                <p class="card-text">Create an unforgettable romantic evening with our chefs designing a menu to match the occasion.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="{% static 'img/event-house-warming.jpg' %}" class="card-img-top" alt="Housewarming Party">
+                            <div class="card-body">
+                                <h5 class="card-title">Housewarming Party</h5>
+                                <p class="card-text">Celebrate your new home with delightful food and warm hospitality.</p>
+                            </div>
+                        </div>
+                    </div>
+                     {% endcomment %}
+                </div>
+            </div>
+        </div>
+        <!-- Event Gallery End -->
+
+        <!-- About Start -->
+        <div class="about">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="about-img">
+                            <img src="{% static 'img/indian.jpg' %}" alt="Chef at Home">
+                            <button type="button" class="btn-play" data-toggle="modal" data-src="https://youtu.be/embed/KGAj8IhnR3c?si=v7crNkHzUh8f_vTO" data-target="#videoModal">
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6"> 
+                        <div class="about-content">
+                            <div class="section-header">
+                                <p>About Us</p>
+                                <h2>Bringing Fine Dining to Your Home</h2>
+                            </div>
+                            <div class="about-text">
+                                <p>
+                                    At Chef At Home, we specialize in providing an exceptional dining experience in the comfort of your own space. 
+                                    Whether it's a family dinner, a romantic evening, or a celebration with friends, our professional chefs bring their culinary expertise right to your doorstep.
+                                </p>
+                                <p>
+                                    From menu planning to preparation and cleanup, we handle it all, allowing you to relax and savor every moment with your guests. Experience personalized service and exquisite dishes crafted to your tastes.
+                                </p>
+                                <a class="btn custom-btn" href="">Book Your Chef</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+        
+        <!-- Video Modal Start-->
+        <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>        
+                        <!-- 16:9 aspect ratio -->
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe id="video" width="100%" height="400" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!-- Video Modal End -->
+
+
+       
+
+{% endblock %}

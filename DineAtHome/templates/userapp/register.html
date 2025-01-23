@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header {
+            background-color: #28a745; /* Green */
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #ffc107; /* Yellow */
+            color: #343a40;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            color: #28a745; /* Green for heading */
+        }
+
+        label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #28a745; /* Green focus color */
+        }
+
+        .btn-primary {
+            background-color: #28a745; /* Green for button */
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: #218838; /* Darker green for hover effect */
+        }
+
+        .text-center a {
+            color: #28a745; /* Green for links */
+            text-decoration: none;
+        }
+
+        .text-center a:hover {
+            text-decoration: underline;
+            color: #218838; /* Darker green for hover effect */
+        }
+
+        .toggle-password {
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+
+        .toggle-password:hover {
+            color: #28a745;
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Registration Page</h1>
+    </header>
+
+    <div class="container d-flex justify-content-center align-items-start form-container">
+        <div class="card p-3" style="width: 300px;">
+            <h3 class="text-center mb-3">Register</h3>
+            <form action="/register" method="POST" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <label for="name">Username</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your  username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group position-relative">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('password')">
+                        &#128065; <!-- Eye icon -->
+                    </span>
+                </div>
+                <div class="form-group position-relative">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('confirmPassword')">
+                        &#128065; <!-- Eye icon -->
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                <div class="text-center mt-3">
+                    <a href="{% url 'loginview' %}">Already have an account? Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function togglePasswordVisibility(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const type = passwordField.type === "password" ? "text" : "password";
+            passwordField.type = type;
+        }
+    
+        function validateForm() {
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const confirmPassword = document.getElementById("confirmPassword").value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+            if (!name || !email || !password || !confirmPassword) {
+                alert("All fields are required. Please fill out every field.");
+                return false;
+            }
+    
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+    
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+    
+            return true;
+        }
+    </script>
+    
+    
+    <script>
+        function togglePasswordVisibility(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const type = passwordField.type === "password" ? "text" : "password";
+            passwordField.type = type;
+        }
+    
+        function validateEmail() {
+            const email = document.getElementById("email").value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    
+    <footer>
+        <p>&copy; 2025 Registration Page. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function togglePasswordVisibility(fieldId) {
+            const field = document.getElementById(fieldId);
+            const type = field.type === 'password' ? 'text' : 'password';
+            field.type = type;
+        }
+    </script>
+</body>
+</html>

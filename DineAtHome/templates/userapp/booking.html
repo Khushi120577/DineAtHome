@@ -1,0 +1,208 @@
+{% extends "master.html" %}
+{% load static %}
+{% block content%}
+
+    <body>
+    
+        <!-- Page Header Start -->
+        <div class="page-header mb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Hire a Chef</h2>
+                    </div>
+                    <div class="col-12">
+                        <a href="{% url "indexview" %}">Home</a>
+                        <a href="">Chef on Demand</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header End -->
+        
+
+        <!-- Booking Start -->
+        <div class="booking">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <div class="booking-content">
+                            <div class="section-header">
+                                <p>Chef on Demand</p>
+                                <h2>Hire a Professional Chef at Your Convenience</h2>
+                            </div>
+                            <div class="about-text">
+                                <p>
+                                    Bring the luxury of a personal chef to your home or event. Whether it’s a romantic dinner, a family gathering, or a celebration, our chefs provide exceptional culinary experiences tailored to your preferences.
+                                </p>
+                                <p>
+                                    From menu planning to cooking and cleanup, we handle everything so you can relax and enjoy the moment.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="booking-form">
+                            <form>
+                                <div class="control-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Your Name" required="required" />
+                                        <div class="input-group-append">
+                                            <div class="input-group-text"><i class="far fa-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="input-group">
+                                        <input type="email" class="form-control" placeholder="Your Email" required="required" />
+                                        <div class="input-group-append">
+                                            <div class="input-group-text"><i class="far fa-envelope"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Your Phone" required="required" />
+                                        <div class="input-group-append">
+                                            <div class="input-group-text"><i class="fa fa-phone-alt"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="input-group date" id="event-date" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" placeholder="Event Date" data-target="#event-date" data-toggle="datetimepicker"/>
+                                        <div class="input-group-append" data-target="#event-date" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="input-group time" id="event-time" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" placeholder="Event Time" data-target="#event-time" data-toggle="datetimepicker"/>
+                                        <div class="input-group-append" data-target="#event-time" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <textarea class="form-control" placeholder="Special Requests or Event Details" required="required"></textarea>
+                                </div>
+                                <div>
+                                    <button class="btn custom-btn" type="submit">Submit Request</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Booking End -->
+        
+        <!-- Chef Specialities Start -->
+        <div class="menu">
+            <div class="container">
+                <div class="section-header text-center">
+                    <p>Chef Specialities</p>
+                    <h2>Our Professional Chefs' Expertise</h2>
+                </div>
+                <div class="menu-tab">
+                    <ul class="nav nav-pills justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="pill" href="#appetizers">Appetizers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#mains">Main Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#desserts">Desserts</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="appetizers" class="container tab-pane active">
+                            <div class="row">
+                                <div class="col-lg-7 col-md-12">
+                                    <div class="menu-item">
+                                        <div class="menu-img">
+                                            <img src="{% static 'img/menu-appetizer.jpg' %}" alt="Image">
+                                        </div>
+                                        <div class="menu-text">
+                                            <h3><span>Bruschetta</span> <strong>$8.00</strong></h3>
+                                            <p>Freshly grilled bread topped with a mix of tomatoes, basil, and olive oil.</p>
+                                        </div>
+                                    </div>
+                                    <div class="menu-item">
+                                        <div class="menu-img">
+                                            <img src="{% static 'img/menu-appetizer.jpg' %}" alt="Image">
+                                        </div>
+                                        <div class="menu-text">
+                                            <h3><span>Spring Rolls</span> <strong>$7.00</strong></h3>
+                                            <p>Crispy rolls filled with vegetables, served with sweet chili sauce.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 d-none d-lg-block">
+                                    <img src="{% static 'img/menu-appetizer-img.jpg' %}" alt="Image">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="mains" class="container tab-pane fade">
+                            <div class="row">
+                                <div class="col-lg-7 col-md-12">
+                                    <div class="menu-item">
+                                        <div class="menu-img">
+                                            <img src="{% static 'img/menu-main.jpg' %}" alt="Image">
+                                        </div>
+                                        <div class="menu-text">
+                                            <h3><span>Grilled Salmon</span> <strong>$18.00</strong></h3>
+                                            <p>Perfectly cooked salmon served with lemon butter sauce.</p>
+                                        </div>
+                                    </div>
+                                    <div class="menu-item">
+                                        <div class="menu-img">
+                                            <img src="{% static 'img/menu-main.jpg' %}" alt="Image">
+                                        </div>
+                                        <div class="menu-text">
+                                            <h3><span>Steak & Potatoes</span> <strong>$22.00</strong></h3>
+                                            <p>Juicy steak paired with creamy mashed potatoes.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 d-none d-lg-block">
+                                    <img src="{% static 'img/menu-main-img.jpg' %}" alt="Image">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="desserts" class="container tab-pane fade">
+                            <div class="row">
+                                <div class="col-lg-7 col-md-12">
+                                    <div class="menu-item">
+                                        <div class="menu-img">
+                                            <img src="{% static 'img/menu-dessert.jpg' %}" alt="Image">
+                                        </div>
+                                        <div class="menu-text">
+                                            <h3><span>Chocolate Cake</span> <strong>$10.00</strong></h3>
+                                            <p>Rich chocolate cake with a molten center.</p>
+                                        </div>
+                                    </div>
+                                    <div class="menu-item">
+                                        <div class="menu-img">
+                                            <img src="{% static 'img/menu-dessert.jpg' %}" alt="Image">
+                                        </div>
+                                        <div class="menu-text">
+                                            <h3><span>Cheesecake</span> <strong>$9.00</strong></h3>
+                                            <p>Classic cheesecake with a buttery crust.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 d-none d-lg-block">
+                                    <img src="{% static 'img/menu-dessert-img.jpg' %}" alt="Image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Chef Specialities End -->
+
+{% endblock %}
