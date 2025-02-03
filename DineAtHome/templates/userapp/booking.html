@@ -1,4 +1,4 @@
-{% extends "master.html" %}
+{% extends "userapp/master.html" %}
 {% load static %}
 {% block content%}
 
@@ -98,7 +98,7 @@
         </div>
         <!-- Booking End -->
         
-        <!-- Chef Specialities Start -->
+        {% comment %} <!-- Chef Specialities Start -->
         <div class="menu">
             <div class="container">
                 <div class="section-header text-center">
@@ -203,6 +203,6 @@
                 </div>
             </div>
         </div>
-        <!-- Chef Specialities End -->
+        <!-- Chef Specialities End --> {% endcomment %}
 
 {% endblock %}

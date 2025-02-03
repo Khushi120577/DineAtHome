@@ -22,6 +22,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('userapp/',include('userapp.urls')),
-    # path('chefapp/',include('chefapp.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('',include('userapp.urls')),
+    path('adminapp/',include('adminapp.urls')),
+    path('chefapp/',include('chefapp.urls')),
+    
+] 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

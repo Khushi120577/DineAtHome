@@ -1,4 +1,4 @@
-{% extends "master.html" %}
+{% extends "userapp/master.html" %}
 {% load static %}
 {% block content%}
 
@@ -215,7 +215,7 @@
                                 <p>
                                     From menu planning to preparation and cleanup, we handle it all, allowing you to relax and savor every moment with your guests. Experience personalized service and exquisite dishes crafted to your tastes.
                                 </p>
-                                <a class="btn custom-btn" href="">Book Your Chef</a>
+                                <a class="btn custom-btn" href="{% url "chefview" %}">Book Your Chef</a>
                             </div>
                         </div>
                     </div>

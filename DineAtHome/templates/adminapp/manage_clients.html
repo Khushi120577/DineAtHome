@@ -1,0 +1,112 @@
+{% extends "adminapp/admin-master.html" %}
+
+{% block content %}
+<div class="pagetitle">
+  <h1>Event Management</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'indexview' %}">Home</a></li>
+      <li class="breadcrumb-item active">Manage Events</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Events</h5>
+
+          <!-- Filters -->
+          <form method="GET" action="#">
+            <div class="row g-3 mb-4">
+              <!-- Event Type Filter -->
+              <div class="col-md-6">
+                <label for="event_type" class="form-label">Event Type</label>
+                <select id="event_type" name="event_type" class="form-select">
+                  <option value="">All Types</option>
+                  <option value="birthday_party">Birthday Party</option>
+                  <option value="special_occasion">Special Occasion</option>
+                  <option value="corporate_events">Corporate Events</option>
+                  <option value="family_dinner">Family Dinner</option>
+                  <option value="housewarming_party">Housewarming Party</option>
+                  <option value="ring_ceremony">Ring Ceremony</option>
+                  <option value="baby_shower">Baby Shower</option>
+                  <option value="bachelor_party">Bachelor Party</option>
+                  <option value="kitty_party">Kitty Party</option>
+                </select>
+              </div>
+
+              <!-- Activity Status Filter -->
+              <div class="col-md-6">
+                <label for="activity_status" class="form-label">Activity Status</label>
+                <select id="activity_status" name="activity_status" class="form-select">
+                  <option value="">All Status</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+              </div>
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+          </form>
+          <!-- End Filters -->
+
+          <!-- Events Table -->
+          <table class="table datatable">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Activity Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for event in events %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ event.name }}</td>
+                <td>{{ event.get_event_type_display }}</td>
+                <td>
+                  {% if event.is_active %}
+                  <span class="badge bg-success">Active</span>
+                  {% else %}
+                  <span class="badge bg-danger">Inactive</span>
+                  {% endif %}
+                </td>
+                <td>
+                  <div class="d-flex gap-2">
+                    <form method="POST" action="{% url 'activate_event' event.id %}" class="d-inline">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-success btn-sm">Activate</button>
+                    </form>
+                    <form method="POST" action="{% url 'deactivate_event' event.id %}" class="d-inline">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-warning btn-sm">Deactivate</button>
+                    </form>
+                    <form method="POST" action="{% url 'delete_event' event.id %}" class="d-inline">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="5" class="text-center">No events found.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <!-- End Events Table -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

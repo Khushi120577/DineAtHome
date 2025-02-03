@@ -1,0 +1,93 @@
+{% extends "adminapp/admin-master.html" %}
+
+{% block content %}
+<div class="pagetitle">
+  <h1>Chef Management</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'indexview' %}">Home</a></li>
+      <li class="breadcrumb-item active">Manage Chefs</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Chefs</h5>
+
+          <!-- Filters -->
+          <form method="GET" action="{% url 'managechefview' %}">
+            <div class="row g-3 mb-4">
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+          </form>
+          <!-- End Filters -->
+
+          <!-- Chef Table -->
+          <table class="table datatable">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">Cuisine</th>
+                <th scope="col">Experience (Years)</th>
+                <th scope="col">Authorization Status</th>
+                <th scope="col">Actions</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              {% for chef in chefs %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>
+                  {% if chef.photo %}
+                  <img src="{{ chef.photo.url }}" alt="{{ chef.name }}" class="img-thumbnail" style="width: 60px; height: 60px;">
+                  {% else %}
+                  <span class="text-muted">No photo</span>
+                  {% endif %}
+                </td>
+                <td>{{ chef.name }}</td>
+                <td>{{ chef.cuisine }}</td>
+                <td>{{ chef.experience }}</td>
+                <td>
+                  {% if chef.is_authorized %}
+                  <span class="badge bg-success">Authorized</span>
+                  {% else %}
+                  <span class="badge bg-danger">Unauthorized</span>
+                  {% endif %}
+                </td>
+                <td>
+                  <div class="d-flex gap-2">
+                    <form method="POST" action="{% url 'authorize_chef' chef.id %}" class="d-inline">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-success btn-sm">Accept Chef</button>
+                    </form>
+                    <form method="POST" action="{% url 'remove_chef' chef.id %}" class="d-inline">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-danger btn-sm">Remove Chef</button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="7" class="text-center">No chefs found.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <!-- End Chef Table -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

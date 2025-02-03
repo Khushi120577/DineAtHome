@@ -1,0 +1,92 @@
+{% extends 'adminapp/admin-master.html' %}
+{% load static %}
+{% block content %}
+
+<div class="pagetitle">
+  <h1>Admin Dashboard</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+  <div class="row">
+    <!-- Left side columns -->
+    <div class="col-lg-12">
+      <div class="row">
+
+        <!-- Total Chefs Card -->
+        <div class="col-xxl-4 col-md-6">
+          <div class="card info-card chefs-card">
+            <div class="card-body">
+              <h5 class="card-title">Total Chefs</h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-person-workspace"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ chefs_count }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- End Total Chefs Card -->
+
+        <!-- Total Clients Card -->
+        <div class="col-xxl-4 col-md-6">
+          <div class="card info-card clients-card">
+            <div class="card-body">
+              <h5 class="card-title">Total Clients</h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-people"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ clients_count }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- End Total Clients Card -->
+
+        <!-- Total Orders Card -->
+        <div class="col-xxl-4 col-md-6">
+          <div class="card info-card orders-card">
+            <div class="card-body">
+              <h5 class="card-title">Total Orders</h5>
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-cart"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ orders_count }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- End Total Orders Card -->
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <!-- Manage Chefs -->
+    <div class="col-lg-4">
+      <a href="{% url "managechefview" %}" class="btn btn-primary w-100">Manage Chefs</a>
+    </div>
+    <!-- Manage Clients -->
+    <div class="col-lg-4">
+      <a href="{% url "manageclientview" %}" class="btn btn-primary w-100">Manage Clients</a>
+    </div>
+    <!-- Manage Orders -->
+    <div class="col-lg-4">
+      <a href="manageorderview" class="btn btn-primary w-100">Manage Orders</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

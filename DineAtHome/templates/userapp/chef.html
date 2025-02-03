@@ -1,177 +1,102 @@
-{% extends "master.html" %}
+{% extends "userapp/master.html" %}
 {% load static %}
-{% block content%}
+{% block content %}
 
+<body>
 
-    <body>
-        
-        
-        
-        <!-- Page Header Start -->
-        <div class="page-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h2>Master Chef</h2>
-                    </div>
-                    <div class="col-12">
-                        <a href="{% url "indexview" %}">Home</a>
-                        <a href="">Chef</a>
-                    </div>
+    <!-- Page Header Start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Master Chef</h2>
+                </div>
+                <div class="col-12">
+                    <a href="{% url 'indexview' %}">Home</a>
+                    <a href="">Chef</a>
                 </div>
             </div>
         </div>
-        <!-- Page Header End -->
-        
+    </div>
+    <!-- Page Header End -->
 
-        <!-- Team Start -->
-        <div class="team">
-            <div class="container">
-                <div class="section-header text-center">
-                    <p>Our Team</p>
-                    <h2>Our Master Chef</h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
+    <!-- Add Chef Form -->
+    <div class="container">
+        <h3>Add a New Chef</h3>
+        <form method="POST" action="{% url 'add_chef' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="cuisine" class="form-label">Cuisine</label>
+                <select id="cuisine" name="cuisine" class="form-select" required>
+                    <option value="">Select Cuisine</option>
+                    <option value="Italian">Italian</option>
+                    <option value="French">French</option>
+                    <option value="Indian">Indian</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Japanese">Japanese</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="experience" class="form-label">Experience (Years)</label>
+                <input type="number" id="experience" name="experience" class="form-control" min="0" required>
+            </div>
+            <div class="mb-3">
+                <label for="photo" class="form-label">Photo</label>
+                <input type="file" id="photo" name="photo" class="form-control" accept="image/*" required>
+            </div>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Add Chef</button>
+            </div>
+        </form>
+        
+    </div>
+    <!-- End Add Chef Form -->
+
+    <!-- Team Start -->
+    <div class="team">
+        <div class="container">
+            <div class="section-header text-center">
+                <p>Our Team</p>
+                <h2>Our Master Chefs</h2>
+            </div>
+            <div class="row">
+                {% for chef in chefs %}
+                    <div class="col-lg-3 col-md-6 mb-4">
                         <div class="team-item">
                             <div class="team-img">
-                                <img src="{% static 'img/team-1.jpg' %}" alt="Image">
+                                {% if chef.image %}
+                                    <img src="{{ chef.image.url }}" alt="{{ chef.name }}" class="img-fluid" style="height: 250px; object-fit: cover;">
+                                {% else %}
+                                    <img src="{% static 'img/default-chef.jpg' %}" alt="Default Chef" class="img-fluid" style="height: 250px; object-fit: cover;">
+                                {% endif %}
                                 <div class="team-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
                                 </div>
                             </div>
-                            <div class="team-text">
-                                <h2>Adam Phillips</h2>
-                                <p>CEO, Co Founder</p>
+                            <div class="team-text text-center">
+                                <h4>{{ chef.name }}</h4>
+                                <p><strong>Specialty:</strong> {{ chef.specialty }}</p>
+                                <p>{{ chef.bio }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{% static 'img/team-2.jpg' %}" alt="Image">
-                                <div class="team-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-text">
-                                <h2>Dylan Adams</h2>
-                                <p>Master Chef</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{% static 'img/team-3.jpg' %}" alt="Image">
-                                <div class="team-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-text">
-                                <h2>Jhon Doe</h2>
-                                <p>Master Chef</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{% static 'img/team-4.jpg' %}" alt="Image">
-                                <div class="team-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-text">
-                                <h2>Josh Dunn</h2>
-                                <p>Master Chef</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{% static 'img/team-1.jpg' %}" alt="Image">
-                                <div class="team-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-text">
-                                <h2>Adam Phillips</h2>
-                                <p>CEO, Co Founder</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{% static 'img/team-2.jpg' %} " alt="Image">
-                                <div class="team-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-text">
-                                <h2>Dylan Adams</h2>
-                                <p>Master Chef</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{% static 'img/team-3.jpg' %}" alt="Image">
-                                <div class="team-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-text">
-                                <h2>Jhon Doe</h2>
-                                <p>Master Chef</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{% static 'img/team-4.jpg' %}" alt="Image">
-                                <div class="team-social">
-                                    <a href=""><i class="fab fa-twitter"></i></a>
-                                    <a href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-text">
-                                <h2>Josh Dunn</h2>
-                                <p>Master Chef</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+                {% if not chefs %}
+                    <p class="text-center">No chefs available yet.</p>
+                {% endif %}
             </div>
         </div>
-        <!-- Team End -->
+    </div>
+    <!-- Team End -->
 
+</body>
 
-      {% endblock %}
+{% endblock %}

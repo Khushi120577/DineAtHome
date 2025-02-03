@@ -96,14 +96,11 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4" style="width: 350px;">
             <h3 class="text-center mb-4">Login</h3>
-            <form action="/login" method="POST" onsubmit="return validateForm()">
+            <form  method="POST">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group position-relative">
                     <label for="password">Password</label>
@@ -112,7 +109,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
                 <div class="text-center mt-3">
-                    <a href="/register">Don't have an account? Register</a> 
+                    <a href="{% url "registerview" %}">Don't have an account? Register</a> 
                 </div>
             </form>
         </div>
@@ -138,18 +135,6 @@
                 passwordField.type = 'password';
                 toggleIcon.textContent = '👁';
             }
-        }
-
-        function validateForm() {
-            const email = document.getElementById('email').value;
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailRegex.test(email)) {
-                alert("Please enter a valid email address.");
-                return false;
-            }
-
-            return true;
         }
     </script>
 </body>
